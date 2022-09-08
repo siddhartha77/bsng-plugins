@@ -1,0 +1,1 @@
+long crc16CCITTEncode(char *bytes, unsigned long byteCount, long init);
