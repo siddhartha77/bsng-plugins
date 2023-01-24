@@ -266,10 +266,9 @@ void myBase16PStrToHexArray(const Str255 s, char *result)
 {
     int i, j;
     
-    for (i = 1, j = 0; i <= s[0] ; ++i, ++j)
+    for (i = 1, j = 0; i <= s[0] ; i += 2, ++j)
     {
         result[j] = (myBaseXCharToVal(s[i]) << 4) + myBaseXCharToVal(s[i+1]);
-        ++i;
     }
 }
 
@@ -775,6 +774,15 @@ register unsigned short		i,len = s[0];
 		for (i = index; i < len; i++) s[i] = s[i + 1];
 		s[0]--;
 	}
+}
+
+void myDeleteSubStringFromPStr(Str255 s, unsigned short index, short len)
+{
+    int i;
+    
+    for (i = 0 ; i < len ; i++) {
+        myDeleteElementFromPStr(s, index);
+    }
 }
 
 void myAlphaNumericPStr(Str255 s) {
