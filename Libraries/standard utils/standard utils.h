@@ -125,6 +125,7 @@ void 			myBracketPStrWithChar	(Str255 s,unsigned char c,signed short numBefore,s
 void			myUnBracketPStrWithChar	(Str255 s,unsigned char c,Boolean doBefore,Boolean doAfter);
 void			myStripCharFromPStr		(Str255 s,unsigned char c);
 void			myDeleteElementFromPStr	(Str255 s,unsigned short index);
+void            myDeleteSubStringFromPStr(Str255 s, unsigned short index, short len);
 void            myAlphaNumericPStr      (Str255 s);
 void            myNumericPStr           (Str255 s);
 
