@@ -108,6 +108,7 @@ unsigned long	my2BytesAsUNum		(const StringPtr s);									// gets unsigned valu
 
 unsigned long	cStrLen(const Ptr s,unsigned long maxLen);
 void			myCStrToPStr(unsigned char *s);
+void            myPStrToCStr(Str255 s);
 
 void 			myCopyPStr				(const Str255 orig,Str255 copy);
 Boolean			myEqualPStr				(const Str255 s,const Str255 t);
