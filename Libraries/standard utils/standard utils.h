@@ -36,7 +36,8 @@ typedef unsigned char Str8[9];
 
 
 // RANDOM NUMBER/STRING GENERATION UTILITIES
-					   
+
+long            myOSRandom              (long seed);
 Boolean			myBooleanRandom			(void);
 unsigned short	myShortRangedRandom		(unsigned short min,unsigned short max);
 unsigned long	myLongRangedRandom		(unsigned long  min,unsigned  long max);

@@ -22,7 +22,23 @@
 
 /* ************************************************************************************************ */
 //RANDOM NUMBER GENERATION UTILITIES
-					 
+
+long myOSRandom(long seed)
+{
+#define MODULUS     0x7FFFFFFF  // 2^31 - 1 (prime number)
+#define MULTIPLIER  0x41A7      // The constant multiplier
+#define QUOTIENT    0x1F31D     // (MODULUS / MULTIPLIER)
+#define REMAINDER   0xB14       // (MODULUS % MULTIPLIER)
+
+    seed = MULTIPLIER * (seed % QUOTIENT) - REMAINDER * (seed / QUOTIENT);
+
+    if (seed > 0) {
+       return seed;
+    } else {
+       return seed + MODULUS;
+    }
+}
+
 Boolean myBooleanRandom(void)
 {
 	return ((Boolean) Ultra_short1());
