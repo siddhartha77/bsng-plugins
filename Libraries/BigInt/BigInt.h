@@ -126,6 +126,14 @@ bigint* bigint_div_mod_half_word(
 );
 
 bigint* bigint_gcd(bigint *dst, const bigint *src_a, const bigint *src_b);
+bigint* bigint_gcd_extended(
+    bigint *dst,
+    const bigint *src_a,
+    const bigint *src_b,
+    bigint *x,
+    bigint *y
+);
+bigint* bigint_mod_inverse(bigint *dst, const bigint *src_a, const bigint *src_m);
 bigint* bigint_sqrt(bigint *dst, const bigint *src);
 
 bigint* bigint_rand_bits(bigint *dst, int n_bits, bigint_rand_func rand_func);

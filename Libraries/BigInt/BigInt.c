@@ -936,6 +936,80 @@ bigint* bigint_gcd(bigint *dst, const bigint *src_a, const bigint *src_b){
     return dst;
 }
 
+bigint* bigint_gcd_extended(
+    bigint *dst,
+    const bigint *src_a,
+    const bigint *src_b,
+    bigint *x,
+    bigint *y
+) {
+    bigint  zero[1];
+    bigint  x1[1], y1[1];
+    bigint  mod[1];
+
+    bigint_init(zero);
+    bigint_from_int(zero, 0);
+    
+    if (!bigint_cmp(src_a, zero)) {
+        bigint_from_int(x, 0);
+        bigint_from_int(y, 1);
+
+        bigint_free(zero);
+
+        bigint_cpy(dst, src_b);
+        
+        return dst;
+    }
+
+    bigint_init(x1);
+    bigint_init(y1);
+    bigint_init(mod);
+
+    bigint_mod(mod, src_b, src_a);
+    bigint_gcd_extended(dst, mod, src_a, x1, y1);
+    bigint_div(x, src_b, src_a);
+    bigint_mul(x, x, x1);
+    bigint_sub(x, y1, x);
+    bigint_cpy(y, x1);
+
+    bigint_free(zero);
+    bigint_free(x1);
+    bigint_free(y1);
+    bigint_free(mod);
+
+    return dst;
+}
+
+bigint* bigint_mod_inverse(bigint *dst, const bigint *src_a, const bigint *src_m) {
+    bigint x[1], y[1];
+    bigint g[1];
+    bigint one[1];
+
+    bigint_init(x);
+    bigint_init(y);
+    bigint_init(g);
+    bigint_init(one);
+
+    bigint_from_int(one, 1);
+
+    bigint_gcd_extended(g, src_a, src_m, x, y);
+
+    if (bigint_cmp(g, one)) {
+        dst = NULL;
+    } else {
+        bigint_mod(dst, x, src_m);
+        bigint_add(dst, dst, src_m);
+        bigint_mod(dst, dst, src_m);
+    }
+
+    bigint_free(x);
+    bigint_free(y);
+    bigint_free(g);
+    bigint_free(one);
+
+    return dst;
+}
+
 bigint* bigint_sqrt(bigint *dst, const bigint *src){
     int bit;
     bigint sum[1], tmp[1];
