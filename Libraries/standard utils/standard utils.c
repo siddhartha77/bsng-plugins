@@ -317,7 +317,9 @@ void myBaseBRandomDigits(StringPtr s,unsigned short b,unsigned short numDigits)
 register short	i;
 register short	max = b - 1;
 
-	for (i=numDigits-1;i>=0;i--) s[i] = myValToBaseXChar(myShortRangedRandom(0,max));
+	//for (i=numDigits-1;i>=0;i--) s[i] = myValToBaseXChar(myShortRangedRandom(0,max));
+    for (i=numDigits;i>=0;i--) s[i] = myValToBaseXChar(myShortRangedRandom(0,max));
+    s[0] = numDigits;
 }
 
 void mySFBaseBRandomPStr(Str255 s,unsigned short b,unsigned short numSigDigits)
