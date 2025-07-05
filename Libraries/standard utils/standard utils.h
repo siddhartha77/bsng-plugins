@@ -112,6 +112,8 @@ void			myCStrToPStr(unsigned char *s);
 void            myPStrToCStr(Str255 s);
 
 void 			myCopyPStr				(const Str255 orig,Str255 copy);
+void            myCopyPStrToCStr        (Str255 t, const Ptr s);
+void            myCopyCStrToPStr        (const Ptr s, Str255 t);
 Boolean			myEqualPStr				(const Str255 s,const Str255 t);
 
 short			myFindFirstInPStr		(const Str255 s,unsigned char c);					// returns 0 iff c is not in s
