@@ -615,6 +615,20 @@ void myCopyPStr(const Str255 s,Str255 t)
 	BlockMove((Ptr) s,(Ptr) t,s[0]+1);
 }
 
+void myCopyPStrToCStr(Str255 t, const Ptr s) {
+    BlockMove((Ptr)(&t[1]), (Ptr)s, t[0]);
+    s[t[0]] = '\0';
+} 
+
+void myCopyCStrToPStr(const Ptr s, Str255 t) {
+    register short len;
+    
+    len = cStrLen(s, 0xff);
+    t[0] = len;
+    
+    BlockMove((Ptr)s, (Ptr)(&t[1]), len);
+}
+
 Boolean myEqualPStr(const Str255 s,const Str255 t)
 {
 register short	i=s[0];
