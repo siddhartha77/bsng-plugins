@@ -759,6 +759,28 @@ register short	len=s[0];
 	}
 }
 
+void myFormatPStr(Str255 s, Str255 format, unsigned char c) {
+    Str255          buff;
+    register short  offset;
+    register short  i = 1;
+    register short  sLen = s[0];
+    
+    BlockMove(format, buff, format[ + 1]);
+    
+    if (sLen > 0) {
+        while (offset = myFindFirstInPStr(format, c)) {
+            format[offset] = s[i++];
+            
+            if (i > sLen) {
+                break;
+            }
+        }
+    }
+    
+    BlockMove(format, s, format[0] + 1);
+    BlockMove(buff, format, buff[0] + 1);
+}
+
 void myBracketPStrWithChar(Str255 s,unsigned char c,signed short numBefore,signed short numAfter)
 {
 register short	i,j,len=s[0];
