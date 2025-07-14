@@ -107,9 +107,9 @@ unsigned long	my2BytesAsUNum		(const StringPtr s);									// gets unsigned valu
 
 // STRING MANIPULATION ROUTINES
 
-unsigned long	cStrLen(const Ptr s,unsigned long maxLen);
-void			myCStrToPStr(unsigned char *s);
-void            myPStrToCStr(Str255 s);
+unsigned long	cStrLen                 (const Ptr s,unsigned long maxLen);
+void			myCStrToPStr            (unsigned char *s);
+void            myPStrToCStr            (Str255 s);
 
 void 			myCopyPStr				(const Str255 orig,Str255 copy);
 void            myCopyPStrToCStr        (Str255 t, const Ptr s);
@@ -125,6 +125,7 @@ void			myAppendPStr			(Str255 s,const Str255 suffixStr);
 void			myAppendCharToPStr		(Str255 s,unsigned char c);
 void			myAppendQuotedPStr		(Str255 s,const Str255 suffixStr);
 void			myInsertInPStr			(Str255 s,const Str255 insertStr,short offset);		// does an 'insert before'
+void            myFormatPStr            (Str255 s, Str255 format, unsigned char c);         // format e.g. nnnn-nnnn-nnnn and c='n'
 void 			myBracketPStrWithChar	(Str255 s,unsigned char c,signed short numBefore,signed short numAfter);
 void			myUnBracketPStrWithChar	(Str255 s,unsigned char c,Boolean doBefore,Boolean doAfter);
 void			myStripCharFromPStr		(Str255 s,unsigned char c);
