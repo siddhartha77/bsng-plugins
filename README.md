@@ -5,6 +5,7 @@ Each file is compressed with [StuffIt 5.5](https://macintoshgarden.org/apps/stuf
 
 # Important Files
 * **[/Libraries](Libraries/)**: Contains various libraries necessary to compile the plugins.
+  * Note that **[/Libraries/standard utils](/Libraries/standard%20utils)** is updated regularly.
 * **/_My * Template.sit**: Contains the template files I use to quickly make plugins.
 
 # Creating Your Own Plugins
