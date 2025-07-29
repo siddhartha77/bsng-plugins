@@ -120,6 +120,7 @@ short			myFindFirstInPStr		(const Str255 s,unsigned char c);					// returns 0 if
 short			myFindLastInPStr		(const Str255 s,unsigned char c);					// returns 0 iff c is not in s
 
 void 			myGetPStrSubString		(const Str255 s,short offset,unsigned short numChars,Str255 subStr);
+void            myGetPStrField(const Str255 s, unsigned char delimiter, unsigned short index, Str255 fieldStr);
 void			myPrefixPStr			(Str255 s,const Str255 prefixStr);
 void			myAppendPStr			(Str255 s,const Str255 suffixStr);
 void			myAppendCharToPStr		(Str255 s,unsigned char c);
