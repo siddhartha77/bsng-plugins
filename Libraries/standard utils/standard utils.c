@@ -685,6 +685,33 @@ register unsigned short	end;
 	}
 }
 
+void myGetPStrField(const Str255 s, unsigned char delimiter, unsigned short index, Str255 fieldStr)
+{
+    register short i;
+    register short offset = 1;
+    register short len = s[0];
+    register short fieldLen = 0;
+    register short count = 0;
+    
+    for (i = 1 ; i <= len ; ++i) {
+        if (s[i] == delimiter || (i == len && count > 0)) {
+            if (index == count++) {
+                /* Capture the last char as long as it's not a delimiter */
+                if (i == len && (s[i] != delimiter)) ++i;
+                BlockMove((Ptr)&s[offset], (Ptr)&fieldStr[1], i - offset);
+                fieldStr[0] = i - offset;
+                return;
+            } else {
+                offset = i + 1;
+                
+            }
+        }
+    }
+    
+    /* If we made it this far there was probably an error */
+    fieldStr[0] = 0;
+}
+
 void myPrefixPStr(Str255 s,const Str255 prefixStr)
 {
 register unsigned short	i=s[0];
