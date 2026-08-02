@@ -50,9 +50,8 @@ register unsigned short		qdRdm;		//treat return value as 0-65536
 register unsigned long		range,t;
 
 	qdRdm =(unsigned short) Ultra_short16();
-	range =max-min;
-	if (range != 1) t = (qdRdm * range) >> 16;		//now 0 <= t <= range
-	else		    t = (qdRdm % 2);
+	range =(max-min) + 1;
+	t = (qdRdm * range) >> 16;
 	return (t+min);
 }
 
